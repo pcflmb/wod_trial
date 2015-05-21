@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:user, :likes).all
-      @user = User.where(name: 'Max').first
+    @user = User.where(name: 'Max').first
+    @posts = Post.includes(:user).joins(:likes).joins("LEFT OUTER JOIN (select post_id from likes where user_id = #{@user.id}) ul ON ul.post_id = posts.id").group('posts.id').select("posts.*, count(likes.id) as total_likes, count(ul.post_id) as user_liked").all
   end
 
   # GET /posts/1

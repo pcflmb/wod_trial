@@ -1,4 +1,4 @@
-<span id="<%= "#{likes_id(post)}" %>"><%= post.likes.count %> Likes</span>
+<span id="<%= "#{likes_id(post)}" %>"><%= post['total_likes'] %> Likes</span>
 <button class="like-button" data-likes-count-id="<%= "##{likes_id(post)}" %>" data-url="<%= like_post_path(post) %>">
 	<%= like_button_text(post) %>
 </button>

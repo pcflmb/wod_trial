@@ -5,10 +5,10 @@ module PostsHelper
 
 	def like_button_text(post)
 		# Make sure the button reads correctly on load
-		if post.likes.pluck(:user_id).include? @user.id 
+		if post['user_liked'].to_i > 0
 			'Dislike' 
 		else 
 			'Like' 
-		end
+		end 
 	end
 end
