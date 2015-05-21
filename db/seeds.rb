@@ -21,3 +21,7 @@ end
   p = Post.new(user: user, content: content)
   p.save
 end
+
+20.times do |n|
+	(1..30).to_a.sample(rand(10)).each { |uid| Like.new(post_id: n, user_id: uid).save }
+end
